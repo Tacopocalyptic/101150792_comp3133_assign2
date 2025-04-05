@@ -13,4 +13,20 @@ export class BackendAPIService {
   getEmployees() {
 
   }
+  addEmployee() {
+
+  }
+  editEmployee() {
+
+  }
+  deleteEmployee() {
+
+  }
+
+  login() {
+
+  }
+  signup() {
+    
+  }
 }
