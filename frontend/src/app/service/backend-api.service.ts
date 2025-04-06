@@ -10,7 +10,14 @@ export class BackendAPIService {
   constructor(private httpClient: HttpClient) { }
 
   // TOOD - graphql queries
+  // Employee functions
   getEmployees() {
+
+  }
+  getEmployeeByID() {
+
+  }
+  filterEmployees() {
 
   }
   addEmployee() {
@@ -23,6 +30,7 @@ export class BackendAPIService {
 
   }
 
+  // User functions
   login() {
 
   }
