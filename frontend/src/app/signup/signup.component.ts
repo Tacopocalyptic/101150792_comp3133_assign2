@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -13,11 +14,11 @@ import {MatInputModule} from '@angular/material/input';
 export class SignupComponent {
   signupForm: any;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private router: Router) {}
 
   ngOnInit():void{
     // TODO - check if logged in here
-    
+
     this.signupForm = this.formBuilder.group({
       username: ['', [Validators.required]],
       email: ['', [Validators.required]],
@@ -27,5 +28,6 @@ export class SignupComponent {
 
   signUp() {
     // TODO - signup logic
+    this.router.navigate(['/', 'employees'])
   }
 }
