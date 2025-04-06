@@ -1,17 +1,25 @@
-import { inject } from '@angular/core';
+import { inject, PLATFORM_ID } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 
 export const authGuard: CanActivateFn = (route, state) => {
-  const token = localStorage.getItem('token')
-  const router = inject(Router)
+  // const router = inject(Router)
+  // const platformID = inject(PLATFORM_ID)
+  
+  // if(isPlatformBrowser(platformID)){
+  //   console.log("PLATFORM IS BROWSER")
 
-  if(!!token){
-    // TODO - token authentication/refresh with backend
-    return true
-  } else {
-    // temporarily leaving this open
-    // router.navigateByUrl('login')
-    // return false
-    return true;
-  }
+  //   const token = localStorage.getItem('token')
+  //   if(!!token){
+  //     // TODO - token authentication/refresh with backend
+  //     return true
+  //   } else {
+  //     router.navigateByUrl('login')
+  //     // return false
+  //     return true
+  //   }
+  // }
+  // console.log("PLATFORM IS NOT BROWSER")
+
+  return true;
 };

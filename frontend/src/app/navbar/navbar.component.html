@@ -1,0 +1,8 @@
+<mat-toolbar>
+    <span><a routerLink="employees" class="nav-title">Employee Management System</a></span>
+    <span class="spacer"></span>
+    <button mat-fab extended routerLink="employees">Employee List</button>
+    <button mat-fab extended routerLink="employees/add">Add Employee</button>
+    <button mat-fab extended (click)="logOut()">Log Out</button>
+</mat-toolbar>
+<router-outlet />

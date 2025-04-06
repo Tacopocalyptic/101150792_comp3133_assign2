@@ -1,1 +1,19 @@
-<p>signup works!</p>
+<div class="container">
+    <form [formGroup]="signupForm" (ngSubmit)="signUp()" class="signup-form">
+        <h2>Sign Up</h2>
+        <mat-form-field appearance="outline" [hideRequiredMarker]="true" class="form-field">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username">
+        </mat-form-field>
+        <mat-form-field appearance="outline" [hideRequiredMarker]="true" class="form-field">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email">
+        </mat-form-field>
+        <mat-form-field appearance="outline" [hideRequiredMarker]="true" class="form-field">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password">
+        </mat-form-field>
+        <button mat-flat-button class="form-submit-button">Sign Up</button>
+        <a href="login" mat-button>Already Registered? - Log In</a>
+    </form>
+</div>
