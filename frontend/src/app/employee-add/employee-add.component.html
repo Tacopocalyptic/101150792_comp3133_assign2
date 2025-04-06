@@ -1,1 +1,61 @@
-<p>employee-add works!</p>
+<div class="container">
+    <form [formGroup]="addEmpForm" (ngSubmit)="addEmployee()" class="emp-form">
+        <h2>Add an Employee</h2>
+
+        <mat-form-field appearance="outline" [hideRequiredMarker]="true" class="form-field">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="first_name">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" [hideRequiredMarker]="true" class="form-field">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="last_name">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" [hideRequiredMarker]="true" class="form-field">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Gender</mat-label>
+            <mat-select>
+                <mat-option value="Male">Male</mat-option>
+                <mat-option value="Female">Female</mat-option>
+                <mat-option value="Other">Other</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" [hideRequiredMarker]="true" class="form-field">
+            <mat-label>Designation</mat-label>
+            <input matInput formControlName="designation">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" [hideRequiredMarker]="true" class="form-field">
+            <mat-label>Department</mat-label>
+            <input matInput formControlName="department">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" [hideRequiredMarker]="true" class="form-field">
+            <mat-label>Salary</mat-label>
+            <input matInput type="number" formControlName="salary">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" [hideRequiredMarker]="true" class="form-field">
+            <mat-label>Date Joining</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" [hideRequiredMarker]="true" class="form-field">
+            <mat-label>Employee Photo</mat-label>
+            <input matInput formControlName="employee_photo">
+            <mat-hint>Provide a URL</mat-hint>
+        </mat-form-field>
+
+        <br>
+        <button mat-flat-button class="form-submit-button">Add Employee</button>
+        <a href="employees" mat-button>Discard and return to employee list</a>
+    </form>
+</div>
