@@ -5,8 +5,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
-
-import { Employee } from '../models/employee.model';
+import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { BackendAPIService } from '../service/backend-api.service';
 
 @Component({
@@ -17,7 +16,8 @@ import { BackendAPIService } from '../service/backend-api.service';
     MatFormFieldModule, 
     MatInputModule, 
     MatSelectModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    // MatDialogModule
   ],
   templateUrl: './employeelist.component.html',
   styleUrl: './employeelist.component.css'
@@ -29,7 +29,8 @@ export class EmployeelistComponent {
 
   constructor(
     private formBuilder: FormBuilder, 
-    private backendAPI: BackendAPIService
+    private backendAPI: BackendAPIService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(){
@@ -58,6 +59,19 @@ export class EmployeelistComponent {
   }
 
   deleteEmp(id: string){
-    const confirmation = window.confirm('Are you sure you want to permanently delete this Employee?')
+    const dialogRef = this.dialog.open(DeleteConfirm)
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      // TODO - delete from backend if results == true
+    });
   }
 }
+
+// TODO - troubleshoot why this doesn't open
+@Component({
+  selector: 'delete-dialog',
+  templateUrl: './delete-dialog.html',
+  imports: [MatDialogModule, MatButtonModule],
+})
+export class DeleteConfirm {}
