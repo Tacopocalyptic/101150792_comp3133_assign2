@@ -1,40 +1,60 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackendAPIService {
-  private BACKEND_URL: string = process.env['BACKEND_URL'] || "http://localhost:5000/graphql"
+  private BACKEND_URL: string = "http://localhost:5000/graphql"
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  // TOOD - graphql queries
+  // TODO - graphql queries
   // Employee functions
-  getEmployees() {
+  getEmployees(): Observable<any>{
+    const query = `
+      query Query {
+        getEmps {
+        _id
+        first_name
+        last_name
+        email
+        gender
+        designation
+        salary
+        date_of_joining
+        department
+        employee_photo
+        created_at
+        updated_at
+      }
+    }`
+    
+    console.log('getting employees')
+    return this.http.post(this.BACKEND_URL, {query})
+  }
+  getEmployeeByID(id: string) {
 
   }
-  getEmployeeByID() {
-
-  }
-  filterEmployees() {
+  filterEmployees(searchValue: string, searchFilter: string) {
 
   }
   addEmployee() {
 
   }
-  editEmployee() {
+  editEmployee(employee: any) {
 
   }
-  deleteEmployee() {
+  deleteEmployee(id: string) {
 
   }
 
   // User functions
-  login() {
+  login(username: string, password: string) {
 
   }
-  signup() {
+  signup(username: string, email: string, password: string) {
     
   }
 }

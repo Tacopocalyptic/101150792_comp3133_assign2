@@ -35,9 +35,9 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let employee"> 
-        <a [href]="'employee/'+employee._id">Details</a> 
-        <a [href]="'employee/edit/'+employee._id">Edit</a> 
-        <button>Delete</button>
+        <a mat-button [href]="'employee/'+employee._id">Details</a> 
+        <a mat-button [href]="'employee/edit/'+employee._id">Edit</a> 
+        <button mat-button (click)="deleteEmp(employee._id)">Delete</button>
       </td>
     </ng-container>
 

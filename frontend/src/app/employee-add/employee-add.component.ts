@@ -7,6 +7,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { Router } from '@angular/router';
+import { BackendAPIService } from '../service/backend-api.service';
 
 @Component({
   selector: 'app-employee-add',
@@ -27,18 +28,18 @@ export class EmployeeAddComponent {
 
   constructor(
     private formBuilder: FormBuilder, 
-    private router: Router
+    private router: Router,
+    // private backendAPI: BackendAPIService
   ) {}
 
   ngOnInit(){
     this.addEmpForm = this.formBuilder.group({
-      _id: ['', [Validators.required]],
       first_name: ['', [Validators.required]],
       last_name: ['', [Validators.required]],
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       gender: ['', [Validators.required]],
       designation: ['', [Validators.required]],
-      salary: ['', [Validators.required]],
+      salary: ['', [Validators.required, Validators.min(1000)]],
       date_of_joining: ['', [Validators.required]],
       department: ['', [Validators.required]],
       employee_photo: ['', [Validators.required]],
@@ -46,7 +47,17 @@ export class EmployeeAddComponent {
   }
 
   addEmployee(){
+    console.log(this.addEmpForm)
 
-    this.router.navigate(['/','employees'])
+    if(!this.addEmpForm?.valid){
+      const newEmp = this.addEmpForm.value
+      console.log(newEmp)
+
+      // Backend call here to save emp
+      // this.router.navigateByUrl('/employees/')
+    }else{
+      // alert("Please double check information is correct")
+    }
+
   }
 }
