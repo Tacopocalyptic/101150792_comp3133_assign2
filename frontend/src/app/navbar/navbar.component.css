@@ -1,3 +1,6 @@
+.nav-bar{
+    gap: 10px;
+}
 .spacer {
     flex: 1 1 auto;
 }
