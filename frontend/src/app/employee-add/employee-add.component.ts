@@ -29,7 +29,7 @@ export class EmployeeAddComponent {
   constructor(
     private formBuilder: FormBuilder, 
     private router: Router,
-    // private backendAPI: BackendAPIService
+    private backendAPI: BackendAPIService
   ) {}
 
   ngOnInit(){
@@ -56,7 +56,8 @@ export class EmployeeAddComponent {
       // Backend call here to save emp
       // this.router.navigateByUrl('/employees/')
     }else{
-      // alert("Please double check information is correct")
+      console.log(`Error adding employee`)
+      window.alert("Please double check information is correct")
     }
 
   }

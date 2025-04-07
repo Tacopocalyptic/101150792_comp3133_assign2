@@ -10,7 +10,7 @@ export class BackendAPIService {
 
   constructor(private http: HttpClient) { }
 
-  // TODO - graphql queries
+  // TODO - finish graphql queries
   // Employee functions
   getEmployees(): Observable<any>{
     const query = `
@@ -35,7 +35,26 @@ export class BackendAPIService {
     return this.http.post(this.BACKEND_URL, {query})
   }
   getEmployeeByID(id: string) {
+    const query = `
+    query {
+      searchEmpById(id: "${id}") {
+        _id
+        first_name
+        last_name
+        email
+        gender
+        designation
+        salary
+        date_of_joining
+        department
+        employee_photo
+        created_at
+        updated_at
+      }
+    }`
 
+    console.log(`Finding Employee with ID ${id}`)
+    return this.http.post(this.BACKEND_URL, {query})
   }
   filterEmployees(searchValue: string, searchFilter: string) {
 
